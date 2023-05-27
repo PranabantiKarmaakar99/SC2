@@ -194,7 +194,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-        if (n === 0) {
+        if (n == 0) {
             return 1;
         } else {
             return n * factorial(n - 1);
@@ -325,11 +325,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-            console.log(convertedValue);
+            console.log("convertedValue:",convertedValue);
+            
+              if (convertedValue == "ln(2.71828)") {currentValue=1}
+            
             // console.log(angle)
-            const result = eval(convertedValue);
+           else { const result = eval(convertedValue);
 
-            currentValue = result.toString();
+          
+
+            currentValue = result.toString();}
             display.value = currentValue;
         }
 
@@ -355,6 +360,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const value = buttons[i].innerText;
             display.value = currentValue;
+
+            prevValue2 = currentValue;
+                display2.value = "Ans = " + prevValue2;
+
+
+                // currentValue = "0";
+                display.value = currentValue;
             
             
            if (value == "CE") {
@@ -400,10 +412,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
             else if (value == "x!") {
 
+            //    if (currentValue == "0!") { display.value = 1} 
 
-                let prevValue = currentValue;
-                currentValue += "!";
+                //   console.log(prevValue);
+                  console.log(prevValue2);
+                 ;
+                // let prevValue = currentValue;
+                currentValue = prevValue2 + "!";
                 display.value = currentValue;
+                 console.log(currentValue);
 
 
 
@@ -547,9 +564,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
             else if (value == "e") {
 
+                console.log(currentValue);
+
+               
+
                
 
                 console.log(currentValue);
+                //  display.value = currentValue;
+
 
                 if (currentValue == "0") 
                 
@@ -566,7 +589,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 }
+
+                else if (currentValue.includes("ln")) {currentValue += "e";
+                                                   console.log(46);
+                                                //   currentValue = value ;
+                                                  display.value = currentValue;
+                                                console.log(47);
+                                                
+                                                }
                 else { 
+
+                     console.log(24);
                     currentValue = value ;
                     display.value = currentValue;
                 }
@@ -731,16 +764,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
             else if (value == "=") {
 
+               
+               console.log(prevValue2)
 
-
-
-                if (currentValue.includes("!")) {
+                if (prevValue2.includes("!")) {
+                    console.log("Am I there?")
                     currentValue = currentValue.slice(0, -1)
+                    console.log(currentValue)
                     let result = factorial(currentValue);
                     currentValue = result.toString();
                     display.value = currentValue;
 
-                    currentValue = "0";
+                    // currentValue = "0";
 
                 }
 
